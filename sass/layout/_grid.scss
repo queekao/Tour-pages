@@ -1,0 +1,55 @@
+.row {
+  position: relative;
+  max-width: $grid-width;
+  margin: 0 auto;
+  margin-bottom: $gutter-vertical-small;
+
+  [class^="col-"] {
+    &:not(:last-child) {
+      @include respond(TabPort) {
+        margin-bottom: $gutter-vertical-small;
+      }
+    }
+  }
+  [class^="col-"] {
+    float: left;
+    &:not(:last-child) {
+      margin-right: $gutter-horizontal;
+      @include respond(TabPort) {
+        margin-right: 0;
+      }
+    }
+    @include respond(TabPort) {
+      width: 100% !important;
+    }
+  } //you can use thing operator to selector all the attribute in html
+  //  [class*="col-"]{}  selector the class contain "col-"
+  //  [class$="col-"]{}  End with col-l
+  @include respond(TabPort) {
+    max-width: 60rem;
+    padding: 0 3rem;
+  }
+  @include clearfixing;
+  .col-1-2 {
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+  }
+  .col-1-3 {
+    width: calc((100% - #{$gutter-horizontal} * 2) / 3);
+  }
+  .col-1-4 {
+    width: calc((100% - #{$gutter-horizontal} * 3) / 4);
+  }
+  .col-2-3 {
+    width: calc(
+      (100% - #{$gutter-horizontal} * 2) * 2 / 3 + #{$gutter-horizontal}
+    );
+  }
+  .col-3-4 {
+    width: calc(
+      (100% - #{$gutter-horizontal} * 3) * 3 / 4 + #{$gutter-horizontal} * 2
+    );
+  }
+  .col-2-4 {
+    width: calc((100% - #{$gutter-horizontal}) * 2 / 4);
+  }
+}

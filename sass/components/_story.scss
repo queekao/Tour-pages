@@ -1,0 +1,74 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: $shadow-2;
+  background-color: rgba($Purple-blue-1, 0.5);
+  padding: 6rem;
+  padding-left: 9rem;
+  border-radius: $border-sharp;
+  font-size: $body-1;
+  transform: skewX(-12deg);
+  @include respond(TabPort) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+  @include respond(Phone) {
+    width: 90%;
+    padding: 4rem;
+    padding-left: 7rem;
+    transform: skewX(0);
+  }
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%); //put the value of radius
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg); // we have a transform here
+    position: relative;
+    overflow: hidden;
+    @include respond(Phone) {
+      transform: skewX(0);
+      -webkit-shape-outside: circle(50% at 90% 60%);
+      shape-outside: circle(50% at 90% 60%);
+    }
+  }
+  &__img {
+    height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: all 0.3s;
+    filter: blur(0px) brightness(100%);
+  }
+  &__text {
+    transform: skewX(12deg);
+    @include respond(Phone) {
+      transform: skewX(0);
+      margin-left: 4rem;
+    }
+  }
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 30%);
+    color: $Purple-blue-2;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: $body-1;
+    opacity: 0;
+    transition: all 0.3s;
+    backface-visibility: hidden;
+  }
+  &:hover &__caption {
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+  }
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(80%);
+  }
+}

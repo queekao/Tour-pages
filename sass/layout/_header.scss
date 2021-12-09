@@ -1,0 +1,52 @@
+.header {
+  position: relative;
+  height: 95vh;
+  background-image: linear-gradient(
+      297.09deg,
+      rgba($Purple-blue-9, 0.8) -19.78%,
+      rgba($Purple-blue-5, 0.8) 104.94%
+    ),
+    url(../img/hero-small.jpg);
+  background-size: cover;
+  background-position: top;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  // @supports (-webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%)) and
+  //   (clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%)) {
+
+  //   height: 95vh;
+  // }
+  // the 192dpi resolution is APPLE retina screen and the camma here is a 'or'
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+    (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+    (min-width: 125em) {
+    background-image: linear-gradient(
+        297.09deg,
+        rgba($Purple-blue-9, 0.8) -19.78%,
+        rgba($Purple-blue-5, 0.8) 104.94%
+      ),
+      url(../img/hero.jpg);
+  }
+  @include respond(TabPort) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    height: 60vh;
+  }
+
+  &__logo-box {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+  }
+  &__logo {
+    width: 40%;
+    height: 40%;
+  }
+  &__text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}

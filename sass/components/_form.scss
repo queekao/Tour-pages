@@ -1,0 +1,103 @@
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  &__input {
+    font-size: $body-1;
+    padding: 1.5rem 2rem;
+    font-family: inherit;
+    border-radius: $border-sharp;
+    background-color: rgba($Purple-blue-2, $alpha: 0.9);
+    border-bottom: 2px solid transparent;
+    width: 70%;
+    display: block;
+    border: none;
+    transition: all 0.3s;
+    &:focus {
+      outline: none;
+      box-shadow: $shadow-inner;
+      border-bottom: 2px solid $Purple-blue-5;
+    }
+    &:focus:invalid {
+      border-bottom: 2px solid $red;
+      //   if you type the wrong thing it will be invalid
+    }
+    &::-webkit-input-placeholder {
+      color: $Purple-blue-11;
+    }
+  }
+
+  &__label {
+    font-size: $body-2;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s;
+    color: $Purple-blue-11;
+  }
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+  // (+ is adjacent sibling selector) ~ (is general sibling selector)
+  &__radio-group {
+    width: 49%;
+    display: inline-block;
+    @include respond(TabPort) {
+      width: 49%;
+      float: right;
+      margin-bottom: 2rem;
+    }
+  }
+  &__radio-button {
+    display: none;
+  }
+  &__radio-label {
+    font-size: $body-1;
+    cursor: pointer;
+    position: relative;
+    padding-left: 4.5rem;
+    color: $Purple-blue-10;
+  }
+  & span {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -0.4rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: 5px solid $Purple-blue-6;
+    @include respond(TabPort) {
+      border: 4px solid $Purple-blue-6;
+    }
+    @include respond(Phone) {
+      border: 3px solid $Purple-blue-6;
+    }
+    &::after {
+      content: "";
+      height: 1.2rem;
+      width: 1.2rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $Purple-blue-6;
+      opacity: 0;
+      transition: all 0.3s;
+      @include respond(TabPort) {
+        height: 1rem;
+        width: 1rem;
+      }
+    }
+  }
+  &__radio-button:checked ~ &__radio-label span::after {
+    //   the radio button have the check as default and check box also
+    opacity: 1;
+  }
+}

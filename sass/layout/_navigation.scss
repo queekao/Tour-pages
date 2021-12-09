@@ -1,0 +1,148 @@
+.navigation {
+  position: relative;
+  &__check-box {
+    display: none;
+  }
+  &__btn {
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    border-radius: 50%;
+    top: 6rem;
+    right: 6rem;
+    z-index: 2000;
+    background-color: $Purple-blue-4;
+    cursor: pointer;
+    @include respond(TabPort) {
+      top: 3.8rem;
+      right: 3.8rem;
+    }
+  }
+
+  &__bg {
+    height: 6rem;
+    width: 6rem;
+    position: fixed;
+    border-radius: 50%;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient($Purple-blue-6, $Purple-blue-8);
+    z-index: 1000;
+    // transform: scale(70);
+    transition: all 0.3s cubic-bezier(0, 1.01, 1, 0.59);
+    @include respond(TabPort) {
+      top: 4rem;
+      right: 4rem;
+    }
+  }
+  &__nav {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+  &__nav-group {
+    @include positionCenter;
+    text-align: center;
+    list-style: none;
+  }
+  &__nav-item {
+    margin-bottom: 1rem;
+  }
+  &__nav-link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-size: $headline-3;
+      font-weight: 300;
+      color: $Purple-blue-2;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-shadow: $shadow-5;
+      background-image: linear-gradient(
+        105deg,
+        transparent 0%,
+        transparent 50%,
+        $Purple-blue-1 50%
+      );
+      @include respond(TabPort) {
+        font-size: 3rem;
+        margin: 0 auto;
+      }
+      background-size: 231%;
+      padding: 1rem 1rem;
+      transition: all 0.3s;
+      span {
+        margin-right: 1rem;
+      }
+    }
+    &:hover,
+    &:active {
+      background-position: 100%;
+      transform: translateX(1rem);
+      color: $Purple-blue-8;
+      text-shadow: $shadow-1;
+    }
+  }
+  &__check-box:checked ~ &__bg {
+    transform: scale(90);
+  }
+  &__check-box:checked ~ &__nav {
+    width: 110%;
+    opacity: 1;
+  }
+  &__burger {
+    position: relative;
+    &,
+    &::before,
+    &::after {
+      @include positionCenter;
+      height: 2px;
+      width: 3rem;
+      display: inline-block;
+      background-color: $Purple-blue-9;
+    }
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      transition: all 0.2s;
+    }
+    &::before {
+      top: 1rem;
+      @include respond(TabPort) {
+        top: 1.2rem;
+      }
+    }
+    &::after {
+      top: -1rem;
+      @include respond(TabPort) {
+        top: -1.2rem;
+      }
+    }
+  }
+  &__btn:hover &__burger::before {
+    top: 1.2rem;
+  }
+  &__btn:hover &__burger::after {
+    top: -1.2rem;
+  }
+  &__check-box:checked + &__btn &__burger {
+    background-color: transparent;
+    position: absolute;
+    left: 2.1rem;
+  }
+  &__check-box:checked + &__btn &__burger::before {
+    @include positionCenter;
+    transform: rotate(135deg);
+    // transform-origin: from the position that you want to transform
+  }
+  &__check-box:checked + &__btn &__burger::after {
+    @include positionCenter;
+    transform: rotate(-135deg);
+  }
+}

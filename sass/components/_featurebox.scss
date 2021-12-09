@@ -1,0 +1,30 @@
+.feature-box {
+  background-color: rgba($Purple-blue-6, $alpha: 0.5);
+  font-size: $subtitle-1;
+  border-radius: $border-sharp;
+  box-shadow: $shadow-4;
+  backdrop-filter: blur(20px);
+  padding: 2.5rem;
+  text-align: center;
+  transition: all 0.3s;
+  @include respond(TabPort) {
+    padding: 2rem;
+  }
+  &__icon {
+    font-size: $headline-1;
+    background-image: $Gradient-1;
+    margin-bottom: 5rem;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-blend-mode: screen;
+    @include respond(TabPort) {
+      margin-bottom: 4rem;
+    }
+  }
+  &__text {
+    color: $Purple-blue-8;
+  }
+  &:hover {
+    transform: translateY(-1.5rem) scale(1.05);
+  }
+}

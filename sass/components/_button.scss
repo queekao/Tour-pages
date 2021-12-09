@@ -1,0 +1,116 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    font-family: "Lato";
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 5rem;
+    transition: all 0.3s;
+    position: relative;
+    font-size: $body-1;
+
+    //change for button
+    border: none;
+    cursor: pointer;
+  }
+  &:hover {
+    transform: translateY(-3px);
+    background: $Purple-blue-4;
+    box-shadow: $shadow-5;
+    &::after {
+      transform: scale(150%, 150%);
+      opacity: 0;
+    }
+  }
+  &:active {
+    background: $Purple-blue-6;
+    transform: translateY(-1px);
+    box-shadow: $shadow-2;
+    &::before {
+      height: 100%;
+      width: 100%;
+      background: rgba($Purple-blue-8, 0.2);
+    }
+  }
+  &::before {
+    content: "";
+    display: inline-block;
+    border-radius: 10rem;
+    height: 1%;
+    width: 1%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+    z-index: 1;
+    background: $Purple-blue-11;
+    transition: all 0.3s;
+    opacity: 0.1;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    border-radius: 100px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  &--primary {
+    background-color: $Purple-blue-3;
+    color: $Purple-blue-9;
+    text-align: center;
+  }
+  &--primary::after {
+    background-color: $Purple-blue-3;
+  }
+  &--animation {
+    animation: moveInBottom 1s 2s;
+    animation-fill-mode: backwards;
+  }
+  &--secondary {
+    background-color: $Purple-blue-6;
+    color: $Purple-blue-2;
+    text-align: center;
+  }
+  &--secondary::after {
+    background-color: $Purple-blue-6;
+  }
+}
+.btn-text {
+  &:link,
+  &:visited {
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    padding: 3px;
+    color: $Purple-blue-6;
+    font-size: $headline-5;
+    transition: all 0.3s;
+  }
+  &:hover {
+    background-color: $Purple-blue-5;
+    transform: translateY(-3px);
+    box-shadow: $shadow-5;
+    color: $Purple-blue-2;
+    border-bottom: 1px solid $Purple-blue-6;
+    border-radius: $border-sharp;
+  }
+  &:active {
+    background-color: $Purple-blue-6;
+    transform: translateY(-1px);
+    box-shadow: $shadow-2;
+    color: $Purple-blue-2;
+    border-bottom: 1px solid $Purple-blue-6;
+  }
+}
+
+/* you can see btn twice 'visited' */
